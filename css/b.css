@@ -47,7 +47,7 @@ a:link,a:visited ,a:hover {
 .fl{
     float: left;
 }
-
+.infinite{animation-iteration-count:infinite;}
 
 /****nav****/
 .nav{

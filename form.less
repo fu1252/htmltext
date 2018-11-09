@@ -1,0 +1,95 @@
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@padding-base-vertical:     6px;
+@padding-base-horizontal:   12px;
+@line-height-base:        1.428571429; // 20/14
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+@input-border:                   #ccc;
+@border-radius-base:        4px;
+@input-border-focus:             #66afe9;
+@input-color-placeholder:        #999;
+
+//minxin
+.box-shadow(@shadow) {
+    -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+            box-shadow: @shadow;
+  }
+  .translate(@x; @y) {
+    -webkit-transform: translate(@x, @y);
+        -ms-transform: translate(@x, @y); // IE9 only
+         -o-transform: translate(@x, @y);
+            transform: translate(@x, @y);
+  }
+  .form-control-focus(@color: @input-border-focus) {
+    @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+    &:focus {
+      border-color: @color;
+      outline: 0;
+      .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
+    }
+  }
+  .placeholder(@color: @input-color-placeholder) {
+    // Firefox
+    &::-moz-placeholder {
+      color: @color;
+      opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+    }
+    &:-ms-input-placeholder { color: @color; } // Internet Explorer 10+
+    &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+  }
+//----------main------
+.form-control {
+    display: block;
+    width: 100%;
+    height: @input-height-base; 
+    padding: @padding-base-vertical @padding-base-horizontal;
+    font-size: @font-size-base;
+    line-height: @line-height-base;
+    color: @gray;
+    background-color: white;
+    background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+    border: 1px solid @input-border;
+    border-radius: @border-radius-base; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
+    .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+    .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+  
+    // Customize the `:focus` state to imitate native WebKit styles.
+    .form-control-focus();
+  
+    // Placeholder
+    .placeholder();
+  
+    // Unstyle the caret on `<select>`s in IE10+.
+    &::-ms-expand {
+      border: 0;
+      background-color: transparent;
+    }
+
+
+    //color
+
+@white: #fff;
+@black: #000;
+
+@gray-darker: #222;
+@gray-dark: #333;
+@gray: #555;
+@gray-light: #777;
+@gray-lighter: #eee;
+
+@primary-color: darken(#428bca, 6.5%); // #337ab7
+@success-color: #5cb85c;
+@info-color: #5bc0de;
+@warning-color: #f0ad4e;
+@danger-color: #d9534f;
+
+@text-color: @gray-dark;
+
+@link-color: @primary-color;
+@link-hover-color: darken(@link-color, 15%);
+@link-hover-decoration: underline;
+
+@font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-size-base: 14px;
+@font-size-large: ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small: ceil((@font-size-base * 0.85)); // ~12px
+@line-height-base:        1.428571429;

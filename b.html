@@ -8,9 +8,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/b.css">
     <link rel="stylesheet" href="./font/iconfont.css">
-    <link rel="stylesheet" href="./css/swiper.min.css">
-    <script src="./js/swiper.min.js"></script>
-    
+    <link rel="stylesheet" href="./css/swiper.css">
+    <link rel="stylesheet" href="./css/animate.css">
+    <link rel="stylesheet" href="./css/scrollanim.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery.fadethis.js"></script>
+    <script src="./js/swiper.js"></script>
 </head>
 
 <body>
@@ -26,18 +29,19 @@
         </ul>
     </div>
     <div class="firstbox">
-        <div class="txt1">The easiest way to move forward</div>
-        <div class="txt2">Cross-platform mobile services that help you everyday.</div>
-        <div class="btngrowm"><span class="btn1">Get started</span><span class="btn2">Learn more</span></div>
+        <div class="slide-top txt1">The easiest way to move forward</div>
+        <div class="slide-top txt2" data-plugin-options='{"speed":2200, "distance":200}'>Cross-platform mobile services that help you everyday.</div>
+        <div class="btngrowm"><span class="slide-left btn1"
+            data-plugin-options='{"speed":3200, "distance":420}'>Get started</span><span class="btn2">Learn more</span></div>
     </div>
     <div class="twobox">
         <div class="innerbox">
-            <div class="icon"><i class="iconfont icon-gouwuche"></i></div>
+            <div class="icon animated swing"><i class="iconfont icon-gouwuche"></i></div>
             <p class="text">Free delivery</p>
             <p>With every purchase via the internet</p>
         </div>
         <div class="innerbox">
-            <div class="icon"><i class="iconfont icon-suo"></i></div>
+            <div class="slide-top icon" data-plugin-options='{"speed":1200, "distance":620}'><i class="iconfont icon-suo"></i></div>
             <p class="text">Free delivery</p>
             <p>With every purchase via the internet</p>
         </div>
@@ -70,7 +74,7 @@
             <p class="text1">Personal cloud storage</p>
             <p class="text2">Whether it’s overall happiness in a country, the unemployment rate, or the participation
                 rate in the latest polls or e-votes, you can view everything on a powerful, customizable dashboard.</p>
-            <i class="iconfont icon-naoling"></i>
+            <i class="iconfont icon-naoling slide-left"></i>
             <p class="text1">Personal cloud storage</p>
             <p class="text2">Whether it’s overall happiness in a country, the unemployment rate, or the participation
                 rate in the latest polls or e-votes, you can view everything on a powerful, customizable dashboard.</p>
@@ -88,7 +92,7 @@
             <p>Casual news from Shark</p>
         </div>
         <div class="sixbox2">
-            <div class="innerbox fl">
+            <div class="innerbox fl slide-top">
                 <div class="img img1"></div>
                 <p class="text1">Soundcloud music</p>
                 <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper leo eu aliquet
@@ -351,6 +355,20 @@
      });
         }
      </script>
+     <script>
+
+        $(document).ready(function() {
+
+            $(window).fadeThis({
+
+                speed: 1000,
+
+            });
+
+        });
+
+    </script>
+
 </body>
 
 </html>

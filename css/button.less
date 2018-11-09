@@ -1,0 +1,171 @@
+
+//-------main
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0; 
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;       
+    cursor: pointer;
+    background-image: none; 
+    border: 1px solid transparent;
+    white-space: nowrap;
+    .button-size(6px; 12px; @font-size-base; @line-height-base; 4px);
+    user-select:none;
+  
+    &,
+    &:active,                                                 
+    &.active {
+      &:focus,
+      &.focus {
+        .tab-focus();
+      }
+    }
+  
+    &:hover,
+    &:focus,
+    &.focus {
+      color: #333;
+      text-decoration: none;
+    }
+  
+    &:active,
+    &.active {
+      outline: 0;
+      background-image: none;
+      .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+    }
+  
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+      cursor: not-allowed;
+      .opacity(.65);
+      .box-shadow(none);
+    }
+  
+    a& {
+      &.disabled,
+      fieldset[disabled] & {
+        pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+      }
+    }
+  }
+  .btn-select {
+    .button-variant(@btn-select1-color; @btn-select1-bg; @btn-select1-border);
+  }
+ 
+//var
+
+@btn-select1-bg:                 @success-color;
+@btn-select1-color:              #fff;
+@btn-select1-border:             darken(@btn-select1-bg, 5%);
+
+//mixin
+.button-variant(@color; @background; @border) {
+    color: @color;
+    background-color: @background;
+    border-color: @border;
+  
+    &:focus,
+    &.focus {
+      color: @color;
+      background-color: darken(@background, 10%);
+          border-color: darken(@border, 25%);
+    }
+    &:hover {
+      color: @color;
+      background-color: darken(@background, 10%);
+          border-color: darken(@border, 12%);
+    }
+    &:active,
+    &.active,
+    .open > .dropdown-toggle& {
+      color: @color;
+      background-color: darken(@background, 10%);
+          border-color: darken(@border, 12%);
+  
+      &:hover,
+      &:focus,
+      &.focus {
+        color: @color;
+        background-color: darken(@background, 17%);
+            border-color: darken(@border, 25%);
+      }
+    }
+    &:active,
+    &.active,
+    .open > .dropdown-toggle& {
+      background-image: none;
+    }
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus,
+      &.focus {
+        background-color: @background;
+            border-color: @border;
+      }
+    }
+  
+    .badge {
+      color: @background;
+      background-color: @color;
+    }
+  }
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+    padding: @padding-vertical @padding-horizontal;
+    font-size: @font-size;
+    line-height: @line-height;
+    border-radius: @border-radius;
+}
+.tab-focus() {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+  .box-shadow(@shadow) {
+    -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+            box-shadow: @shadow;
+  }
+  .opacity(@opacity) {
+    opacity: @opacity;
+    // IE8 filter
+    @opacity-ie: (@opacity * 100);
+    filter: ~"alpha(opacity=@{opacity-ie})";
+  }
+
+
+
+
+
+  //color
+  
+  @white: #fff;
+@black: #000;
+
+@gray-darker: #222;
+@gray-dark: #333;
+@gray: #555;
+@gray-light: #777;
+@gray-lighter: #eee;
+
+@primary-color: darken(#428bca, 6.5%); // #337ab7
+@success-color: #5cb85c;
+@info-color: #5bc0de;
+@warning-color: #f0ad4e;
+@danger-color: #d9534f;
+
+@text-color: @gray-dark;
+
+@link-color: @primary-color;
+@link-hover-color: darken(@link-color, 15%);
+@link-hover-decoration: underline;
+
+@font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-size-base: 14px;
+@font-size-large: ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small: ceil((@font-size-base * 0.85)); // ~12px
+@line-height-base:        1.428571429;

@@ -1,0 +1,46 @@
+@font-face: utf-8;
+
+//------------main----------
+.main {
+  height: 600px;
+  width: 600px;
+  background-color: #eee;
+  .first {
+    background-color: rosybrown;
+    width: 300px;
+    height: 300px;
+    .a1 {
+      margin: 10px;
+    }
+    
+  }
+}
+
+//color
+
+@white: #fff;
+@black: #000;
+
+@gray-darker: #222;
+@gray-dark: #333;
+@gray: #555;
+@gray-light: #777;
+@gray-lighter: #eee;
+
+@primary-color: darken(#428bca, 6.5%); // #337ab7
+@success-color: #5cb85c;
+@info-color: #5bc0de;
+@warning-color: #f0ad4e;
+@danger-color: #d9534f;
+
+@text-color: @gray-dark;
+
+@link-color: @primary-color;
+@link-hover-color: darken(@link-color, 15%);
+@link-hover-decoration: underline;
+
+@font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-size-base: 14px;
+@font-size-large: ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small: ceil((@font-size-base * 0.85)); // ~12px
+@line-height-base:        1.428571429;
